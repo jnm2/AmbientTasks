@@ -3,7 +3,7 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using System.Linq;
 
-namespace Techsola
+namespace Instrumental
 {
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method)]
     public sealed class RequireOnAllTestMethodsAttribute : Attribute, ITestAction

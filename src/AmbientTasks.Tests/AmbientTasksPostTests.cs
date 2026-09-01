@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Shouldly;
 
-namespace Techsola
+namespace Instrumental
 {
     public static class AmbientTasksPostTests
     {

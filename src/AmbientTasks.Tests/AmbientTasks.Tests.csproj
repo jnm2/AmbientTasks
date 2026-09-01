@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net472</TargetFrameworks>
-    <RootNamespace>Techsola</RootNamespace>
+    <RootNamespace>Instrumental</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

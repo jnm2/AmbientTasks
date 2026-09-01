@@ -5,7 +5,7 @@ using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Techsola
+namespace Instrumental
 {
     /// <summary>
     /// Enables scoped completion tracking and error handling of tasks as an alternative to fire-and-forget and <c>async

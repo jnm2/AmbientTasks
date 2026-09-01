@@ -17,7 +17,7 @@ function ValidateMetadata(
     }
 
     $urlAnchor = $changelogHeaderLines[0].Line.Substring('## '.Length).Replace(' ', '-') -replace '[^-\w]', ''
-    $requiredReleaseNotesLink = "https://github.com/Techsola/AmbientTasks/blob/v$lastReleasedVersion/CHANGELOG.md#$urlAnchor"
+    $requiredReleaseNotesLink = "https://github.com/jnm2/AmbientTasks/blob/v$lastReleasedVersion/CHANGELOG.md#$urlAnchor"
     $packageReleaseNotes = XmlPeek src\AmbientTasks\AmbientTasks.csproj '/Project/PropertyGroup/PackageReleaseNotes/text()'
 
     if (-not $packageReleaseNotes.Contains($requiredReleaseNotesLink)) {

@@ -1,4 +1,4 @@
-# AmbientTasks [![NuGet badge](https://img.shields.io/nuget/v/AmbientTasks)](https://www.nuget.org/packages/AmbientTasks/ "NuGet (releases)") [![MyGet badge](https://img.shields.io/myget/ambienttasks/vpre/AmbientTasks.svg?label=myget)](https://www.myget.org/feed/ambienttasks/package/nuget/AmbientTasks "MyGet (prereleases)") [![Gitter badge](https://img.shields.io/gitter/room/Techsola/AmbientTasks)](https://gitter.im/Techsola/AmbientTasks "Chat on Gitter") [![Build status badge](https://github.com/Techsola/AmbientTasks/workflows/CI/badge.svg)](https://github.com/Techsola/AmbientTasks/actions?query=workflow%3ACI "Build status") [![codecov badge](https://codecov.io/gh/Techsola/AmbientTasks/branch/main/graph/badge.svg)](https://codecov.io/gh/Techsola/AmbientTasks "Test coverage")
+# AmbientTasks [![NuGet badge](https://img.shields.io/nuget/v/AmbientTasks)](https://www.nuget.org/packages/AmbientTasks/ "NuGet (releases)") [![MyGet badge](https://img.shields.io/myget/ambienttasks/vpre/AmbientTasks.svg?label=myget)](https://www.myget.org/feed/ambienttasks/package/nuget/AmbientTasks "MyGet (prereleases)") [![Build status badge](https://github.com/jnm2/AmbientTasks/workflows/CI/badge.svg)](https://github.com/jnm2/AmbientTasks/actions?query=workflow%3ACI "Build status")
 
 All notable changes are documented in [CHANGELOG.md](CHANGELOG.md).
 
@@ -23,6 +23,8 @@ When the UI picker bound to `SelectedFooId` changes the property, the displayed 
 (See the [How to use](#how-to-use) section to see what you’d probably want to add to your `Program.Main`.)
 
 ```cs
+using Instrumental;
+
 public class ViewModel
 {
     private int selectedFooId;

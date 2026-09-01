@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Techsola
+namespace Instrumental
 {
     public static partial class AmbientTasks
     {

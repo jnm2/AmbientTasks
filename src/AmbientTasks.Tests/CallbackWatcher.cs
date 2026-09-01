@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace Techsola
+namespace Instrumental
 {
     /// <summary>
     /// Provides idiomatic callback-based assertions.

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Techsola</RootNamespace>
+    <RootNamespace>Instrumental</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\AmbientTasks.snk</AssemblyOriginatorKeyFile>
@@ -10,12 +10,12 @@
     <Version>1.0.1</Version>
     <PackageReleaseNotes>Debug symbols are no longer in the NuGet package and are now published to the NuGet symbol location that is built in to Visual Studio. See the readme to load debug symbols for prerelease builds from MyGet.
 
-(https://github.com/Techsola/AmbientTasks/blob/v1.0.1/CHANGELOG.md#101---2021-01-10)</PackageReleaseNotes>
-    <Authors>Technology Solutions Associates</Authors>
-    <Copyright>Copyright © 2019–2021 Technology Solutions Associates</Copyright>
+(https://github.com/jnm2/AmbientTasks/blob/v1.0.1/CHANGELOG.md#101---2021-01-10)</PackageReleaseNotes>
+    <Authors>Joseph N. Musser II</Authors>
+    <Copyright>Copyright © 2019–2026 Joseph N. Musser II</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Techsola/AmbientTasks</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Techsola/AmbientTasks</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jnm2/AmbientTasks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jnm2/AmbientTasks</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>async task void post background ambient scope wait track handle error</PackageTags>
     <Description>Enables scoped completion tracking and error handling of tasks as an alternative to fire-and-forget and async void. Easy to produce and consume, and test-friendly.</Description>

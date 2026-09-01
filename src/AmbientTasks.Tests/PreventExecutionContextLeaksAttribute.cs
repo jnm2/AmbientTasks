@@ -5,11 +5,11 @@ using System.Threading;
 using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
 using NUnit.Framework.Internal.Commands;
-using Techsola;
+using Instrumental;
 
 [assembly: RequireOnAllTestMethods(typeof(PreventExecutionContextLeaksAttribute))]
 
-namespace Techsola
+namespace Instrumental
 {
     /// <summary>
     /// Workaround for https://github.com/nunit/nunit/issues/3283.

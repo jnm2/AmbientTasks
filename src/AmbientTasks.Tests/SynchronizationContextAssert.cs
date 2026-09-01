@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using NUnit.Framework;
 
-namespace Techsola
+namespace Instrumental
 {
     public static class SynchronizationContextAssert
     {
