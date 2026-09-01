@@ -21,8 +21,6 @@ jobs:
 
     - name: Build and test
       run: ./build.ps1
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Publish to MyGet
       if: github.ref == 'refs/heads/main'
