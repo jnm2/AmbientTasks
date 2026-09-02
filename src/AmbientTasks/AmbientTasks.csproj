@@ -10,7 +10,7 @@
     <Version>2.0.0</Version>
     <PackageReleaseNotes>The namespace is changing to the individual author's new personal namespace, Instrumental. This reflects that the individual author is now the copyright holder rather than the company whose namespace was previously used.
 
-(https://github.com/jnm2/AmbientTasks/blob/v2.0.0/CHANGELOG.md#200---????-??-??)</PackageReleaseNotes>
+(https://github.com/jnm2/AmbientTasks/blob/$(ShortCommitHash)/CHANGELOG.md#unreleased)</PackageReleaseNotes>
     <Authors>Joseph N. Musser II</Authors>
     <Copyright>Copyright © 2019–2026 Joseph N. Musser II</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -2,22 +2,29 @@ function ValidateMetadata(
     [Parameter(Mandatory=$true)] [string] $ProductVersion,
     [switch] $Release
 ) {
-    $lastReleasedVersion = XmlPeek src\AmbientTasks\AmbientTasks.csproj '/Project/PropertyGroup/Version/text()'
+    $csprojVersion = XmlPeek src\AmbientTasks\AmbientTasks.csproj '/Project/PropertyGroup/Version/text()'
 
     if ($Release) {
         $productVersionWithoutBuildMetadata = $ProductVersion.Substring(0, $ProductVersion.IndexOf('+'))
-        if ($lastReleasedVersion -ne $productVersionWithoutBuildMetadata) {
+        if ($csprojVersion -ne $productVersionWithoutBuildMetadata) {
             throw 'The version must be updated in the .csproj to do a release build.'
         }
     }
 
-    $changelogHeaderLines = Select-String -Path CHANGELOG.md -Pattern ('## [' + $lastReleasedVersion + ']') -SimpleMatch
-    if ($changelogHeaderLines.Count -ne 1) {
-        throw "There must be exactly one entry in CHANGELOG.md for version $lastReleasedVersion."
+    $changelogVersion = $csprojVersion
+    $changelogHeaderLines = @(Select-String -Path CHANGELOG.md -Pattern ('## [' + $changelogVersion + ']') -SimpleMatch)
+    if ($changelogHeaderLines.Count -eq 0 -and -not $Release) {
+        $changelogVersion = 'Unreleased'
+        $changelogHeaderLines = @(Select-String -Path CHANGELOG.md -Pattern ('## [' + $changelogVersion + ']') -SimpleMatch)
     }
 
-    $urlAnchor = $changelogHeaderLines[0].Line.Substring('## '.Length).Replace(' ', '-') -replace '[^-\w]', ''
-    $requiredReleaseNotesLink = "https://github.com/jnm2/AmbientTasks/blob/v$lastReleasedVersion/CHANGELOG.md#$urlAnchor"
+    if ($changelogHeaderLines.Count -ne 1) {
+        throw "There must be exactly one entry in CHANGELOG.md for version $changelogVersion."
+    }
+
+    $urlAnchor = ($changelogHeaderLines[0].Line.Substring('## '.Length).Replace(' ', '-') -replace '[^-\w]', '').ToLowerInvariant()
+    $gitRevision = if ($Release) { "v$csprojVersion" } else { '$(ShortCommitHash)' }
+    $requiredReleaseNotesLink = "https://github.com/jnm2/AmbientTasks/blob/$gitRevision/CHANGELOG.md#$urlAnchor"
     $packageReleaseNotes = XmlPeek src\AmbientTasks\AmbientTasks.csproj '/Project/PropertyGroup/PackageReleaseNotes/text()'
 
     if (-not $packageReleaseNotes.Contains($requiredReleaseNotesLink)) {

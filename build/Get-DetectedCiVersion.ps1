@@ -48,6 +48,7 @@ function XmlPeek(
 
 class VersionInfo {
     [string] $CommitHash
+    [string] $ShortCommitHash
     [string] $ProductVersion
     [string] $PackageVersion
     [string] $FileVersion
@@ -63,6 +64,7 @@ function Get-DetectedCiVersion([switch] $Release) {
 
     $versionInfo = [VersionInfo]::new()
     $versionInfo.CommitHash = (git rev-parse head)
+    $versionInfo.ShortCommitHash = (git rev-parse --short=8 head)
     $versionInfo.ProductVersion = $versionPrefix
     $versionInfo.PackageVersion = $versionPrefix
     $versionInfo.FileVersion = $versionPrefix
@@ -71,10 +73,8 @@ function Get-DetectedCiVersion([switch] $Release) {
         if ($Release) { throw 'Cannot release without a build number.' }
     }
     else {
-        $shortCommitHash = (git rev-parse --short=8 head)
-
         if ($Release) {
-            $versionInfo.ProductVersion += "+build.$buildNumber.commit.$shortCommitHash"
+            $versionInfo.ProductVersion += "+build.$buildNumber.commit.$($versionInfo.ShortCommitHash)"
         }
         elseif ($buildMetadata.PullRequestNumber) {
             $versionInfo.ProductVersion += "-$buildNumber.pr.$($buildMetadata.PullRequestNumber)"
@@ -87,7 +87,7 @@ function Get-DetectedCiVersion([switch] $Release) {
             $versionInfo.PackageVersion += "-$buildNumber.$prereleaseSegment"
         }
         else {
-            $versionInfo.ProductVersion += "-ci.$buildNumber+commit.$shortCommitHash"
+            $versionInfo.ProductVersion += "-ci.$buildNumber+commit.$($versionInfo.ShortCommitHash)"
             $versionInfo.PackageVersion += "-ci.$buildNumber"
         }
 

@@ -22,6 +22,7 @@ Write-Host "Building using version $($versionInfo.ProductVersion)"
 $dotnetArgs = @(
     '--configuration', $configuration
     '/p:RepositoryCommit=' + $versionInfo.CommitHash
+    '/p:ShortCommitHash=' + $versionInfo.ShortCommitHash
     '/p:Version=' + $versionInfo.ProductVersion
     '/p:PackageVersion=' + $versionInfo.PackageVersion
     '/p:FileVersion=' + $versionInfo.FileVersion
