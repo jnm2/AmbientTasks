@@ -18,7 +18,7 @@ Benefits:
 
 ## Example 1 (view model)
 
-When the UI picker bound to `SelectedFooId` changes the property, the displayed label bound to `SelectedFooName` should update to reflect information about the selection.
+When the UI picker bound to `SelectedFooId` changes the property, the displayed label bound to `SelectedFooName` should update to reflect information about the selection. This example uses the new C# 14 [`field` keyword](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/field).
 
 (See the [How to use](#how-to-use) section to see what you’d probably want to add to your `Program.Main`.)
 
@@ -27,19 +27,17 @@ using Instrumental;
 
 public class ViewModel
 {
-    private int selectedFooId;
-
     public int SelectedFooId
     {
-        get => selectedFooId;
+        get;
         set
         {
-            if (selectedFooId == value) return;
-            selectedFooId = value;
+            if (field == value) return;
+            field = value;
             OnPropertyChanged();
 
             // Start task without waiting for it
-            AmbientTasks.Add(UpdateSelectedFooNameAsync(selectedFooId));
+            AmbientTasks.Add(UpdateSelectedFooNameAsync(field));
         }
     }
 
@@ -49,7 +47,7 @@ public class ViewModel
         SelectedFooName = null;
 
         var foo = await LoadFooAsync(fooId);
-        if (selectedFooId != fooId) return;
+        if (SelectedFooId != fooId) return;
 
         // Update UI
         SelectedFooName = foo.Name;
